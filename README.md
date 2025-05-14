@@ -1,0 +1,1 @@
+# coelhosensors-device-management
