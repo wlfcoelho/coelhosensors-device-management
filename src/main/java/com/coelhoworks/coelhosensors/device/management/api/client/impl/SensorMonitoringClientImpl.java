@@ -2,7 +2,7 @@ package com.coelhoworks.coelhosensors.device.management.api.client.impl;
 
 import com.coelhoworks.coelhosensors.device.management.api.client.SensorMonitoringClient;
 import io.hypersistence.tsid.TSID;
-import org.hibernate.annotations.Comment;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -13,6 +13,9 @@ public class SensorMonitoringClientImpl implements SensorMonitoringClient {
 
   public SensorMonitoringClientImpl(RestClient.Builder builder) {
     this.restClient = builder.baseUrl("http://localhost:8082")
+            .defaultStatusHandler(HttpStatusCode::isError, (request, response) -> {
+              throw new SensorMonitoringClientBadGatewayException();
+            })
             .build();
   }
 
