@@ -1,5 +1,6 @@
 package com.coelhoworks.coelhosensors.device.management.api.controller;
 
+import com.coelhoworks.coelhosensors.device.management.api.client.SensorMonitoringClient;
 import com.coelhoworks.coelhosensors.device.management.api.model.SensorInput;
 import com.coelhoworks.coelhosensors.device.management.api.model.SensorOutput;
 import com.coelhoworks.coelhosensors.device.management.common.IdGenerator;
@@ -21,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class SensorController {
 
   private final SensorRepository sensorRepository;
+  private final SensorMonitoringClient sensorMonitoringClient;
 
   @PutMapping("{sensorId}/enable")
   @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -31,6 +33,8 @@ public class SensorController {
     sensor.setEnabled(true);
 
     sensorRepository.save(sensor);
+
+    sensorMonitoringClient.enabledMonitoring(sensorId);
   }
 
   @DeleteMapping("{sensorId}/enable")
@@ -42,6 +46,8 @@ public class SensorController {
     sensor.setEnabled(false);
 
     sensorRepository.save(sensor);
+
+    sensorMonitoringClient.disabledMonitoring(sensorId);
   }
 
   @DeleteMapping("{sensorId}")
