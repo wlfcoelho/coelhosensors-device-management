@@ -1,6 +1,5 @@
 package com.coelhoworks.coelhosensors.device.management.api.client;
 
-import com.coelhoworks.coelhosensors.device.management.api.client.impl.SensorMonitoringClientBadGatewayException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.ClientHttpRequestFactory;

@@ -1,6 +1,6 @@
 package com.coelhoworks.coelhosensors.device.management.api.config.web;
 
-import com.coelhoworks.coelhosensors.device.management.api.client.impl.SensorMonitoringClientBadGatewayException;
+import com.coelhoworks.coelhosensors.device.management.api.client.SensorMonitoringClientBadGatewayException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;

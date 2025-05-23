@@ -1,4 +1,4 @@
-package com.coelhoworks.coelhosensors.device.management.api.client.impl;
+package com.coelhoworks.coelhosensors.device.management.api.client;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
