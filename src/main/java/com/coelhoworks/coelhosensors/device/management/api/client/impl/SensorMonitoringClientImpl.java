@@ -2,6 +2,7 @@ package com.coelhoworks.coelhosensors.device.management.api.client.impl;
 
 import com.coelhoworks.coelhosensors.device.management.api.client.RestClientFactory;
 import com.coelhoworks.coelhosensors.device.management.api.client.SensorMonitoringClient;
+import com.coelhoworks.coelhosensors.device.management.api.model.SensorMonitoringOuput;
 import io.hypersistence.tsid.TSID;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -29,5 +30,14 @@ public class SensorMonitoringClientImpl implements SensorMonitoringClient {
             .uri("/api/sensors/{sensorId}/monitoring/enable", sensorId)
             .retrieve()
             .toBodilessEntity();
+  }
+
+  @Override
+  public SensorMonitoringOuput getDetail(TSID sensorId) {
+    return restClient.get()
+            .uri("/api/sensors/{sensorId}/monitoring", sensorId)
+            .retrieve()
+            .body(SensorMonitoringOuput.class);
+
   }
 }
