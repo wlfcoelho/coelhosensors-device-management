@@ -39,7 +39,7 @@ public class SensorController {
     sensorMonitoringClient.enabledMonitoring(sensorId);
   }
 
-  @DeleteMapping("{sensorId}/enable")
+  @DeleteMapping("/{sensorId}/enable")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void diseble(@PathVariable TSID sensorId) {
     Sensor sensor = sensorRepository.findById(new SensorId(sensorId))
@@ -52,7 +52,7 @@ public class SensorController {
     sensorMonitoringClient.disabledMonitoring(sensorId);
   }
 
-  @DeleteMapping("{sensorId}")
+  @DeleteMapping("/{sensorId}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deleteSensor(@PathVariable TSID sensorId) {
     Sensor sensor = sensorRepository.findById(new SensorId(sensorId))
@@ -60,7 +60,7 @@ public class SensorController {
     sensorRepository.delete(sensor);
   }
 
-  @PutMapping("{sensorId}")
+  @PutMapping("/{sensorId}")
   @ResponseStatus(HttpStatus.OK)
   public SensorOutput atualizationSensor(@PathVariable TSID sensorId,
                                          @RequestBody SensorInput input) {

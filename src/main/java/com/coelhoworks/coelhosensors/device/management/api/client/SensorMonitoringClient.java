@@ -11,12 +11,12 @@ import org.springframework.web.service.annotation.PutExchange;
 @HttpExchange("/api/sensors/{sensorId}/monitoring")
 public interface SensorMonitoringClient {
 
-  @PutExchange("/enabled")
+  @PutExchange("/enable")
   void enabledMonitoring(@PathVariable TSID sensorId);
 
-  @DeleteExchange("/enabled")
+  @DeleteExchange("/enable")
   void disabledMonitoring(@PathVariable TSID sensorId);
 
-  @GetExchange("/enabled")
+  @GetExchange
   SensorMonitoringOuput getDetail(@PathVariable TSID sensorId);
 }
